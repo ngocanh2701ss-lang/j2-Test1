@@ -114,11 +114,68 @@ public class SinhVienRepository {
 
         } catch (Exception e) {
             e.printStackTrace();// kiểu gì cũng ra lỗi in ra lỗi
-            
+
         }
 
         return row;
 
     }
+
+    //sửa SV vafp CSDL => trả về số nguyên dòng sửa được
+    public int updateSinhVien(SinhVien sv) {
+        int row = 0;
+        try {
+            sql = "update SINHVIEN\n"
+                    + "set Hoten=?, GioiTinh=?, DiemTB=?\n"
+                    + "where Masv=?";// đoạn này copy từ sql sang
+
+            ps = cn.prepareStatement(sql);
+            //Gán giá trị cho các dấu ?
+
+            ps.setObject(4, sv.getMaSV());
+            ps.setObject(1, sv.getHoTen());
+            ps.setObject(2, sv.isGioiTinh());// giới tính là boolean nên là dùng là is chứ không get
+            ps.setObject(3, sv.getDiemTB());
+
+            row = ps.executeUpdate();
+            //thi hành câu sql 
+
+        } catch (Exception e) {
+            e.printStackTrace();// kiểu gì cũng ra lỗi in ra lỗi
+
+        }
+
+        return row;
+
+    }
+    //xóa SV vafp CSDL => trả về số nguyên dòng sửa được
+
+    public int deleteSinhVien(String maSVXoa) {
+        int row = 0;
+        try {
+            sql = "delete from SINHVIEN\n"
+                    + "where Masv =?";// đoạn này copy từ sql sang
+
+            ps = cn.prepareStatement(sql);
+            //Gán giá trị cho các dấu ?
+
+            ps.setObject(1, maSVXoa);// cần chú ý các dấu ngoặc là dược 
+//            ps.setObject(1, sv.getHoTen());
+//            ps.setObject(2, sv.isGioiTinh());// giới tính là boolean nên là dùng là is chứ không get
+//            ps.setObject(3, sv.getDiemTB());
+
+            row = ps.executeUpdate();
+            //thi hành câu sql 
+
+        } catch (Exception e) {
+            e.printStackTrace();// kiểu gì cũng ra lỗi in ra lỗi
+
+        }
+
+        return row;
+
+    }
+
+  
 
 }

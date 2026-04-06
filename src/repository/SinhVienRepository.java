@@ -91,4 +91,34 @@ public class SinhVienRepository {
         }
         return null;
     }
+    //về nhà nhớ code nhiều và luyện tập để ôn tập 
+
+    //Thêm sinh viên CSDL => trả về số nguyên dòng thêm được
+    public int addSinhVien(SinhVien sv) {
+
+        int row = 0;
+        try {
+            sql = "insert into SINHVIEN(Masv, Hoten, GioiTinh, DiemTB)\n"
+                    + "values(?, ?, ?, ?)";// đoạn này copy từ sql sang
+
+            ps = cn.prepareStatement(sql);
+            //Gán giá trị cho các dấu ?
+
+            ps.setObject(1, sv.getMaSV());
+            ps.setObject(2, sv.getHoTen());
+            ps.setObject(3, sv.isGioiTinh());// giới tính là boolean nên là dùng là is chứ không get
+            ps.setObject(4, sv.getDiemTB());
+
+            row = ps.executeUpdate();
+            //thi hành câu sql 
+
+        } catch (Exception e) {
+            e.printStackTrace();// kiểu gì cũng ra lỗi in ra lỗi
+            
+        }
+
+        return row;
+
+    }
+
 }

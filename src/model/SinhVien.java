@@ -1,18 +1,15 @@
 package model;
 
+
 /**
  *
  * @author Ánh Baby
  */
 public class SinhVien {
-    //khai báo thuộc tính khai báo đủ dùng, khong khai báo cả bảng
-    //nhớ có cột khóa chính
-    private String maSV;
-    private String hoTen;
-    private boolean gioiTinh;
-    private double diemTB;
-    
-    //Hàm tạo set, get, toString
+  private String maSV;
+  private String hoTen;
+  private boolean gioiTinh;     
+  private double diemTB;
 
     public SinhVien() {
     }
@@ -60,5 +57,6 @@ public class SinhVien {
     public String toString() {
         return "SinhVien{" + "maSV=" + maSV + ", hoTen=" + hoTen + ", gioiTinh=" + gioiTinh + ", diemTB=" + diemTB + '}';
     }
+  
 
 }

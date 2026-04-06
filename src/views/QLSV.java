@@ -41,13 +41,37 @@ public class QLSV {
         }
 
     }
+    public static void themSV(){
+        System.out.println("Mời nhập tên sinh viên cần thêm: ");
+        System.out.print("Mời nhập MaSV: ");
+             String maSV = sc.nextLine();
+             System.out.println("Mời nhập họ tên: ");
+             String hoTen = sc.nextLine();
+             System.out.println("Mời bạn nhập giới tính Nam/Nữ: ");
+             String gt = sc.nextLine();
+             boolean gioiTinh = gt.equalsIgnoreCase("Nam") ? true : false;    
+             System.out.println("Mời bạn nhập điểm trung bình: ");
+             double diemTB = Double.parseDouble(sc.nextLine());
+             
+             SinhVien sv = new SinhVien(maSV, hoTen, gioiTinh, diemTB);
+             
+             int row = repo.addSinhVien(sv);
+             
+             if (row > 0) {
+                 System.out.println("Thêm thành công sv: " + sv);
+                 inDanhSachSV();
+             }else{
+                 System.out.println("Không thêm được dòng nào: ");
+        }
+    }
+            
 
     public static void main(String[] args) {
         int chon;
         while (true) {
             System.out.println("------------------------- ");
             System.out.println("|1. load toàn bộ danh sách SV: ");
-            System.out.println("|2. ");
+            System.out.println("|2. Thêm SV");
             System.out.println("|5. Tìm theo mã sv");
             System.out.println("|0. Thoát");
             System.out.println("---------------------------");
@@ -61,8 +85,8 @@ public class QLSV {
                     //lát phục vụ sau
                     break;
                 case 2:
-                    System.out.println("|2.  ");
-
+                    System.out.println("|2. Thêm SV  ");
+                    themSV();
                     break;
                 case 5:
                     System.out.println("|5. Tìm theo mã sv ");
